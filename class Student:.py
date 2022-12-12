@@ -17,7 +17,7 @@ class Student:
             return 0
 
     def rate_lecturer(self, lecturer, course, grade):
-        if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached:
+        if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached and 1 <= grade <= 10:
             if course in lecturer.grades:
                 lecturer.grades[course] += [grade]
             else:
@@ -71,7 +71,7 @@ class Reviewer(Mentor):
         self.grades = {}
     
     def rate_hw(self, student, course, grade):
-        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
+        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress and 1 <= grade <= 10:
             if course in student.grades:
                 student.grades[course] += [grade]
             else:
